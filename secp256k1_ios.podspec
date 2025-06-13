@@ -33,7 +33,7 @@ s.prepare_command = <<-CMD
                    CMD
 
 s.source_files = "secp256k1_ios/{src,include,contrib}/*.{h,c}", "secp256k1_ios/src/modules/{recovery,ecdh}/*.{h,c}", "secp256k1_ios/libsecp256k1-config.h", "secp256k1_ios/secp256k1_ios.h"
-s.private_header_files = "secp256k1_ios/*.h", "secp256k1_ios/{contrib,src}/*.h""
+s.private_header_files = "secp256k1_ios/*.h", "secp256k1_ios/{contrib,src}/*.h"
 s.public_header_files = "secp256k1_ios/{include}/*.h"
 s.exclude_files = 'secp256k1_ios/src/test*.{c,h}', 'secp256k1_ios/src/gen_context.c', 'secp256k1_ios/src/*bench*.{c,h}', 'secp256k1_ios/src/*bench*.{c,h}', 'secp256k1_ios/src/modules/{recovery,ecdh}/*test*.{c,h}'
 
