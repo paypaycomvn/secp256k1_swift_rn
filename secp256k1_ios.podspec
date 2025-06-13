@@ -18,7 +18,7 @@ s.ios.deployment_target = "9.0"
 s.osx.deployment_target = "10.10"
 s.pod_target_xcconfig = {
     'SWIFT_INCLUDE_PATHS' => '${PODS_ROOT}',
-	'OTHER_CFLAGS' => '-DHAVE_CONFIG_H=1 -pedantic -Wall -Wextra -Wcast-align -Wnested-externs -Wshadow -Wstrict-prototypes -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-unused-function -Wno-long-long -Wno-overlength-strings -O3',
+	'OTHER_CFLAGS' => '-DHAVE_CONFIG_H=1 -DENABLE_MODULE_ECDH=1 -pedantic -Wall -Wextra -Wcast-align -Wnested-externs -Wshadow -Wstrict-prototypes -Wno-shorten-64-to-32 -Wno-conditional-uninitialized -Wno-unused-function -Wno-long-long -Wno-overlength-strings -O3',
     'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/secp256k1_ios/secp256k1_ios"'
 }
 s.prepare_command = <<-CMD
@@ -27,13 +27,13 @@ s.prepare_command = <<-CMD
                         sed -i '' -e 's:include/::g' ./**/**/**/**/*.h
                         sed -i '' -e 's:include/::g' ./**/**/*.c
                         sed -i '' -e 's:src/modules/recovery/:modules/recovery/:g' ./**/**/*.c
-                        sed -i '' -e 's:src/modules/echd/:modules/ecdh/:g' ./**/**/*.c
+                        sed -i '' -e 's:src/modules/ecdh/:modules/ecdh/:g' ./**/**/*.c
                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
                    CMD
 
 s.source_files = "secp256k1_ios/{src,include,contrib}/*.{h,c}", "secp256k1_ios/src/modules/{recovery,ecdh}/*.{h,c}", "secp256k1_ios/libsecp256k1-config.h", "secp256k1_ios/secp256k1_ios.h"
-s.private_header_files = "secp256k1_ios/*.h", "secp256k1_ios/{contrib,src}/*.h", "secp256k1_ios/src/modules/{recovery,ecdh}/*.h"
+s.private_header_files = "secp256k1_ios/*.h", "secp256k1_ios/{contrib,src}/*.h""
 s.public_header_files = "secp256k1_ios/{include}/*.h"
 s.exclude_files = 'secp256k1_ios/src/test*.{c,h}', 'secp256k1_ios/src/gen_context.c', 'secp256k1_ios/src/*bench*.{c,h}', 'secp256k1_ios/src/*bench*.{c,h}', 'secp256k1_ios/src/modules/{recovery,ecdh}/*test*.{c,h}'
 
