@@ -27,7 +27,6 @@ s.prepare_command = <<-CMD
                         sed -i '' -e 's:include/::g' ./**/**/**/**/*.h
                         sed -i '' -e 's:include/::g' ./**/**/*.c
                         sed -i '' -e 's:src/modules/recovery/:modules/recovery/:g' ./**/**/*.c
-                        sed -i '' -e 's:src/modules/echd/:modules/ecdh/:g' ./**/**/*.c
                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
                    CMD
