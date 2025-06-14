@@ -22,13 +22,26 @@ s.pod_target_xcconfig = {
     'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/secp256k1_ios/secp256k1_ios"'
 }
 # thêm cờ-DENABLE_MODULE_ECDH=1
+# s.prepare_command = <<-CMD
+#                         sed -i '' -e 's:include/::g' ./**/**/*.h
+#                         sed -i '' -e 's:include/::g' ./**/**/**/*.h
+#                         sed -i '' -e 's:include/::g' ./**/**/**/**/*.h
+#                         sed -i '' -e 's:include/::g' ./**/**/*.c
+#                         sed -i '' -e 's:src/modules/recovery/:modules/recovery/:g' ./**/**/*.c
+#                         sed -i '' -e 's:src/modules/ecdh/:modules/ecdh/:g' ./**/**/*.c
+#                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
+#                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
+#                    CMD
+
 s.prepare_command = <<-CMD
-                        sed -i '' -e 's:include/::g' ./**/**/*.h
-                        sed -i '' -e 's:include/::g' ./**/**/**/*.h
-                        sed -i '' -e 's:include/::g' ./**/**/**/**/*.h
-                        sed -i '' -e 's:include/::g' ./**/**/*.c
-                        sed -i '' -e 's:\.\./include/::g' ./**/**/*.c
-                        sed -i '' -e 's:\.\./include/::g' ./**/**/*.h
+                        sed -i '' -e 's:\(\.\./\)\?include/::g' ./**/**/*.h
+                        sed -i '' -e 's:\(\.\./\)\?include/::g' ./**/**/**/*.h
+                        sed -i '' -e 's:\(\.\./\)\?include/::g' ./**/**/**/**/*.h
+                        sed -i '' -e 's:\(\.\./\)\?include/::g' ./**/**/*.c
+                        sed -i '' -e 's:\.\./\.\./\.\./include/::g' ./**/**/*.h
+                        sed -i '' -e 's:\.\./\.\./\.\./include/::g' ./**/**/*.c
+                        sed -i '' -e 's:\.\./\.\./::g' ./**/**/*.h
+                        sed -i '' -e 's:\.\./\.\./::g' ./**/**/*.c
                         sed -i '' -e 's:src/modules/recovery/:modules/recovery/:g' ./**/**/*.c
                         sed -i '' -e 's:src/modules/ecdh/:modules/ecdh/:g' ./**/**/*.c
                         sed -i '' -e 's:contrib/::g' ./**/**/*.c
